@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- STICKY HEADER -->
+  <header class="greeting-bar">
+    <div class="greeting-left">
+      <span id="greeting-msg">Good morning</span>
+      <span class="separator">·</span>
+      <span id="greeting-date"></span>
+    </div>
+    <div class="greeting-right">
+      <button id="edit-name-btn" class="btn-icon" title="Set your name">&#128100;</button>
+      <span id="greeting-time"></span>
+      <button id="theme-toggle" class="btn-theme" title="Toggle light / dark mode">&#127769;</button>
+    </div>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <main class="layout">
+
+    <!-- LEFT COLUMN -->
+    <section class="col-left">
+
+      <!-- FOCUS TIMER CARD -->
+      <div class="card" id="timer-card">
+        <div class="card-title">Focus Timer</div>
+        <div id="timer-display">25:00</div>
+        <div class="timer-buttons">
+          <button class="btn-primary btn-sm" id="timer-start">&#9654; Start</button>
+          <button class="btn-ghost   btn-sm" id="timer-stop"  disabled>&#9646;&#9646; Stop</button>
+          <button class="btn-ghost   btn-sm" id="timer-reset">&#8635; Reset</button>
+        </div>
+        <div id="timer-label">Ready to focus?</div>
+      </div>
+
+      <!-- QUICK LINKS CARD -->
+      <div class="card" id="links-card">
+        <div class="card-header">
+          <span class="card-title">Quick Links</span>
+          <button class="btn-ghost btn-sm" id="add-link-btn">+ Add Link</button>
+        </div>
+
+        <div id="link-form" class="hidden">
+          <div class="form-group">
+            <input type="text"  id="link-name-input" class="input" placeholder="Link name"          maxlength="100" autocomplete="off" />
+            <span class="field-error hidden" id="link-name-error"></span>
+          </div>
+          <div class="form-group">
+            <input type="text"  id="link-url-input"  class="input" placeholder="https://example.com" autocomplete="off" />
+            <span class="field-error hidden" id="link-url-error"></span>
+          </div>
+          <div class="form-actions">
+            <button class="btn-primary btn-sm" id="save-link-btn">Save</button>
+            <button class="btn-ghost   btn-sm" id="cancel-link-btn">Cancel</button>
+          </div>
+        </div>
+
+        <ul id="links-list"></ul>
+        <div id="links-empty" class="empty-state hidden">No links yet. Add one!</div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT COLUMN -->
+    <section class="col-right">
+
+      <!-- TO-DO CARD -->
+      <div class="card" id="todo-card">
+        <div class="card-header">
+          <span class="card-title">To-Do List</span>
+          <span id="task-count" class="badge">0 tasks</span>
+        </div>
+
+        <div class="task-input-row">
+          <input type="text" id="task-input" class="input" placeholder="Add a new task..." maxlength="120" autocomplete="off" />
+          <button class="btn-primary" id="add-task-btn">Add</button>
+        </div>
+
+        <div class="filter-tabs">
+          <button class="tab active" data-filter="all">All</button>
+          <button class="tab" data-filter="active">Active</button>
+          <button class="tab" data-filter="completed">Done</button>
+        </div>
+
+        <ul id="task-list"></ul>
+        <div id="task-empty" class="empty-state hidden">Nothing here. Add a task!</div>
+
+        <div class="todo-footer">
+          <span id="active-count">0 tasks left</span>
+          <button class="btn-danger btn-sm" id="clear-done-btn">Clear Done</button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- TOAST -->
+  <div id="toast" class="hidden" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
